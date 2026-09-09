@@ -19,7 +19,7 @@ class Command(BaseCommand):
         for _ in range(count):
             College.objects.create(
                 college_name=fake.company(),
-                code=fake.unique.word().upper()[:5]
+                college_code=fake.unique.word().upper()[:5]  # Pinalitan mula 'code' patungong 'college_code'
             )
         self.stdout.write(self.style.SUCCESS('Initial data for college created successfully.'))
 
