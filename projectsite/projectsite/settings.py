@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 import socket
 from pathlib import Path
+<<<<<<< HEAD
+=======
+import os
+>>>>>>> a4e14e8 (update settings and static for deployment)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'renz202480288.pythonanywhere.com',
+    'shituziekai.pythonanywhere.com',
     '127.0.0.1',
     'localhost',
 ]
