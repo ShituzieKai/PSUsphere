@@ -1,14 +1,18 @@
 from django.contrib import admin
-from django.urls import path
-from studentorg.views import HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
-from studentorg.views import HomePageView, StudentList, StudentCreateView, StudentUpdateView, StudentDeleteView
-from studentorg.views import HomePageView, ProgramList, ProgramCreateView, ProgramUpdateView, ProgramDeleteView
-from studentorg.views import HomePageView, CollegeList, CollegeCreateView, CollegeUpdateView, CollegeDeleteView
-from studentorg.views import HomePageView, OrgMemberList, OrgMemberCreateView, OrgMemberUpdateView, OrgMemberDeleteView
+from django.urls import path, include
+from studentorg.views import (
+    HomePageView,
+    OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView,
+    StudentList, StudentCreateView, StudentUpdateView, StudentDeleteView,
+    ProgramList, ProgramCreateView, ProgramUpdateView, ProgramDeleteView,
+    CollegeList, CollegeCreateView, CollegeUpdateView, CollegeDeleteView,
+    OrgMemberList, OrgMemberCreateView, OrgMemberUpdateView, OrgMemberDeleteView,
+)
 from studentorg import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # Allauth routes
     path('', views.HomePageView.as_view(), name='home'),
     path('organization_list/', OrganizationList.as_view(), name='organization-list'),
     path('organization_list/add/', OrganizationCreateView.as_view(), name='organization-add'),
@@ -29,5 +33,5 @@ urlpatterns = [
     path('orgmember_list/', OrgMemberList.as_view(), name='orgmember-list'),
     path('orgmember_list/add/', OrgMemberCreateView.as_view(), name='orgmember-add'),
     path('orgmember_list/<int:pk>/', OrgMemberUpdateView.as_view(), name='orgmember-update'),
-    path('orgmember_list/<pk>/delete', OrgMemberDeleteView.as_view(), name='orgmember-delete')
+    path('orgmember_list/<pk>/delete', OrgMemberDeleteView.as_view(), name='orgmember-delete'),
 ]
