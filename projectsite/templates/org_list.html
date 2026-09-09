@@ -10,30 +10,30 @@
                         <div class="card-category">Page Subtitle</div>
                     </div>
 
-		    <br />
+            <br />
 
-			<div class="col-md-12 row">
-			    <div class="col-md-6">
-				<form class="navbar-left navbar-form nav-search mr-md-3" action="">
-				    <div class="input-group">
-					<input type="text" placeholder="Search ..." class="form-control" />
-					<div class="input-group-append">
-					    <span class="input-group-text">
-						<i class="la la-search search-icon"></i>
-					    </span>
-					</div>
-				    </div>
-				</form>
-			    </div>
+            <div class="col-md-12 row">
+                <div class="col-md-6">
+                <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'organization-list' %}">
+                    <div class="input-group">
+                    <input type="text" placeholder="Search ..." class="form-control" name="q" value="{{ request.GET.q }}" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                        <i class="la la-search search-icon"></i>
+                        </span>
+                    </div>
+                    </div>
+                </form>
+                </div>
 
-			    <div class="col-md-6">
-				<div class="pull-right">
-				    <a href="{% url 'organization-add' %}" class="btn btn-success btn-rounded">
-					Add Organization
-				    </a>
-				</div>
-			    </div>
-			</div>
+                <div class="col-md-6">
+                <div class="pull-right">
+                    <a href="{% url 'organization-add' %}" class="btn btn-success btn-rounded">
+                    Add Organization
+                    </a>
+                </div>
+                </div>
+            </div>
 
                     <div class="card-body">
                         <table class="table table-striped mt-3">
@@ -42,7 +42,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">College</th>
                                     <th scope="col">Description</th>
-				                    <th scope="col">Action</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
 
@@ -57,12 +57,12 @@
                                         <a href="{% url 'organization-delete' object.id %}" class="text-danger">Delete</a>
                                     </td>
                                 </tr>
-				                    {% empty %}
-				                <tr>
+                                    {% empty %}
+                                <tr>
                                     <td colspan="4" style="text-align: center">
                                         <p class="text-sm font-weight-bold mb-0">No Records Found</p>
                                     </td>
-				                </tr>
+                                </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -75,4 +75,3 @@
     </div>
 </div>
 {% endblock %}
-
