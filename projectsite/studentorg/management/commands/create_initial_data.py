@@ -7,9 +7,30 @@ class Command(BaseCommand):
     help = 'Create initial data for the application'
 
     def handle(self, *args, **kwargs):
+        # Kailangan munang buuin ang Colleges at Programs bago ang Students at Organizations
+        self.create_college(5)
+        self.create_program(10)
         self.create_organization(10)
         self.create_students(50)
         self.create_membership(10)
+
+    def create_college(self, count):
+        fake = Faker()
+        for _ in range(count):
+            College.objects.create(
+                college_name=fake.company(),
+                code=fake.unique.word().upper()[:5]
+            )
+        self.stdout.write(self.style.SUCCESS('Initial data for college created successfully.'))
+
+    def create_program(self, count):
+        fake = Faker()
+        for _ in range(count):
+            Program.objects.create(
+                prog_name=fake.bs().title(),
+                college=College.objects.order_by('?').first()
+            )
+        self.stdout.write(self.style.SUCCESS('Initial data for program created successfully.'))
 
     def create_organization(self, count):
         fake = Faker()
