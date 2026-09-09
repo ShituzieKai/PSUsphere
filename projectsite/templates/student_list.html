@@ -4,68 +4,72 @@
 {% block content %}
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Home</h4>
+        <h4 class="page-title">Students</h4>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">List of Organizations</div>
+                        <div class="card-title">List of Students</div>
                         <div class="card-category">Page Subtitle</div>
                     </div>
 
-		    <br />
+            <br />
 
-			<div class="col-md-12 row">
-			    <div class="col-md-6">
-				<form class="navbar-left navbar-form nav-search mr-md-3" action="">
-				    <div class="input-group">
-					<input type="text" placeholder="Search ..." class="form-control" />
-					<div class="input-group-append">
-					    <span class="input-group-text">
-						<i class="la la-search search-icon"></i>
-					    </span>
-					</div>
-				    </div>
-				</form>
-			    </div>
+            <div class="col-md-12 row">
+                <div class="col-md-6">
+                <form class="navbar-left navbar-form nav-search mr-md-3" method="GET" action="">
+                    <div class="input-group">
+                    <input type="text" name="q" value="{{ request.GET.q|default:'' }}" placeholder="Search ..." class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                <i class="la la-search search-icon"></i>
+                            </button>
+                        </span>
+                    </div>
+                    </div>
+                </form>
+                </div>
 
-			    <div class="col-md-6">
-				<div class="pull-right">
-				    <a href="{% url 'student-add' %}" class="btn btn-success btn-rounded">
-					Add Student
-				    </a>
-				</div>
-			    </div>
-			</div>
+                <div class="col-md-6">
+                <div class="pull-right">
+                    <a href="{% url 'student-add' %}" class="btn btn-success btn-rounded">
+                    Add Student
+                    </a>
+                </div>
+                </div>
+            </div>
 
                     <div class="card-body">
                         <table class="table table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">College</th>
-                                    <th scope="col">Description</th>
-				                    <th scope="col">Action</th>
+                                    <th scope="col">Student ID</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Program</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {% for object in object_list %}
+                                {% for s in student %}
                                 <tr>
-                                    <td>{{ object.name }}</td>
-                                    <td>{{ object.college }}</td>
-                                    <td>{{ object.description }}</td>
-				            <td>
-                                <a href="{% url 'student-update' object.id %}">Edit</a>
-                                <a href="{% url 'student-delete' object.id %}" class="text-danger">Delete</a>
-                            </td>
+                                    <td>{{ s.student_id }}</td>
+                                    <td>{{ s.firstname }}</td>
+                                    <td>{{ s.lastname }}</td>
+                                    <td>{{ s.program }}</td>
+                                    <td>
+                                        <a href="{% url 'student-update' s.id %}">Edit</a>
+                                        <a href="{% url 'student-delete' s.id %}" class="text-danger">Delete</a>
+                                    </td>
                                 </tr>
-				{% empty %}
-				<tr>
-					<td colspan="4" style="text-align: center">
-						<p class="text-sm font-weight-bold mb-0">No Records Found</p>
-					</td>
-				</tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" style="text-align: center">
+                                        <p class="text-sm font-weight-bold mb-0">No Records Found</p>
+                                    </td>
+                                </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -78,4 +82,3 @@
     </div>
 </div>
 {% endblock %}
-
