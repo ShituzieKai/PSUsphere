@@ -13,6 +13,7 @@ from studentorg import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),  # Allauth routes
+    path('api/', include('api.urls')),  # <-- Includes all your new DRF API routes
     path('', views.HomePageView.as_view(), name='home'),
     path('organization_list/', OrganizationList.as_view(), name='organization-list'),
     path('organization_list/add/', OrganizationCreateView.as_view(), name='organization-add'),

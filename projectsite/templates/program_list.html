@@ -82,15 +82,6 @@
                                 </tr>
                                 {% empty %}
                                 <tr>
-                                    <td>{{ object.prog_name }}</td>
-                                    <td>{{ object.college }}</td>
-                                    <td>
-                                        <a href="{% url 'program-update' object.id %}">Edit</a>
-                                        <a href="{% url 'program-delete' object.id %}" class="text-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                {% empty %}
-                                <tr>
                                     <td colspan="3" style="text-align: center">
                                         <p class="text-sm font-weight-bold mb-0">No Records Found</p>
                                     </td>

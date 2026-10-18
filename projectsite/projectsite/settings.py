@@ -52,7 +52,21 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'studentorg',
     'widget_tweaks',
+    'rest_framework',         # <-- Added for DRF
+    'rest_framework.authtoken', # <-- Added for Token Authentication[cite: 21]
+    'api',                      # <-- Added for your API app[cite: 21]
 ]
+
+# REST Framework Global Configuration[cite: 21]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 
 # Dynamic SITE_ID configuration based on environment
 if "pythonanywhere" in socket.gethostname():
