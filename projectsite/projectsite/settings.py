@@ -54,11 +54,11 @@ INSTALLED_APPS = [
     'studentorg',
     'widget_tweaks',
     'rest_framework',         # <-- Added for DRF
-    'rest_framework.authtoken', # <-- Added for Token Authentication[cite: 21]
-    'api',                      # <-- Added for your API app[cite: 21]
+    'rest_framework.authtoken', # <-- Added for Token Authentication
+    'api',                      # <-- Added for your API app
 ]
 
-# REST Framework Global Configuration[cite: 21]
+# REST Framework Global Configuration
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
@@ -69,11 +69,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-# Dynamic SITE_ID configuration based on environment
-if "pythonanywhere" in socket.gethostname():
-    SITE_ID = 2  # Production site ID on PythonAnywhere
-else:
-    SITE_ID = 1  # Local site ID
+# Fixed SITE_ID configuration to match database entry ID 1
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
