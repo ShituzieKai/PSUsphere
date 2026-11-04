@@ -2,7 +2,7 @@ version: "3.8"
 services:
   web:
     build: .
-    image: my-django-app:latest
+    image: shituzieikai/psusphere:latest
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
